@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a routerLink='/' class="navbar-brand">
+    <img [src]="logo" width="30" height="30" alt="">
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngFor="let item of items" routerLinkActive="active">
+        <a [routerLink]="item.url" class="nav-link">{{item.label}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
