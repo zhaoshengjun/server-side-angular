@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { PostsService } from "../../services/posts.service";
 
 @Component({
   selector: "app-posts",
@@ -9,14 +10,12 @@ import { ActivatedRoute } from "@angular/router";
 export class PostsComponent implements OnInit {
   public posts = [];
 
-  constructor() {}
+  constructor(private postsService: PostsService) {}
 
   ngOnInit() {
-    for (let i = 1; i < 10; i++) {
-      this.posts.push({
-        id: i,
-        text: "This is post with id " + i
-      });
-    }
+    this.postsService
+      .getPosts()
+      .map(res => res["items"])
+      .subscribe((result: any) => (this.posts = result));
   }
 }

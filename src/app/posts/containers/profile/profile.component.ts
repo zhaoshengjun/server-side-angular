@@ -1,3 +1,4 @@
+import { PostsService } from "./../../services/posts.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
@@ -8,11 +9,14 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ProfileComponent implements OnInit {
   public profile = { id: null };
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private postsService: PostsService
+  ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(
-      res => (this.profile.id = `prifleId = ${res["profileId"]}`)
-    );
+    this.postsService
+      .getProfile(this.route.snapshot.params["profileId"])
+      .subscribe((result: any) => (this.profile = result));
   }
 }
