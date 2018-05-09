@@ -1,14 +1,13 @@
 <div class="row">
   <div class="col-md-8 offset-md-2">
-    <div class="card mb-3" *ngFor="let post of profile.posts">
+    <div class="card">
       <div class="card-body">
         <div class="media">
-          <img [src]="profile?.avatar" alt="" class="avatar mr-3 rounded">
+          <img [attr.src]="post?.profile?.avatar" alt="" class="avatar mr-3 rounded">
           <div class="media-body">
             <h5>
-              <a routerLink="{{profile?.id}}">{{profile?.fullName}}</a>
+              <a routerLink="{{post?.profile?.id}}"> {{post?.profile?.fullName}} </a>
               <span class="date float-right text-muted">
-
               </span>
             </h5>
             <p>{{post?.text}}</p>

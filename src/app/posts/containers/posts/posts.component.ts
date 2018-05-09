@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { PostsService } from "../../services/posts.service";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-posts",
@@ -15,7 +17,12 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.postsService
       .getPosts()
-      .map(res => res["items"])
+      .pipe(
+        map(res => {
+          console.log(res);
+          return res;
+        })
+      )
       .subscribe((result: any) => (this.posts = result));
   }
 }
