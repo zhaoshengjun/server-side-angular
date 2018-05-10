@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { PostsService } from "../../services/posts.service";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -12,11 +11,10 @@ import { map } from "rxjs/operators";
 export class PostsComponent implements OnInit {
   public posts = [];
 
-  constructor(private postsService: PostsService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.postsService
-      .getPosts()
+    this.route.data
       .pipe(
         map(res => {
           console.log(res);

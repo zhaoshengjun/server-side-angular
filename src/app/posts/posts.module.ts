@@ -1,3 +1,6 @@
+import { ProfileResolver } from "./resolvers/profile-resolver";
+import { PostsResolver } from "./resolvers/posts-resolver";
+import { PostsService } from "./services/posts.service";
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,6 +15,11 @@ import { PostItemComponent } from './components/post-item/post-item.component';
     CommonModule,
     PostsRoutingModule
   ],
+  providers: [
+    PostsService,
+    PostsResolver,
+    ProfileResolver
+  ]
   declarations: [PostsComponent, ProfileComponent, PostListComponent, PostItemComponent]
 })
 export class PostsModule { }
