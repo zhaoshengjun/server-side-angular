@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
     this.route.data
       .subscribe((result: any) => {
         this.profile = result;
-        console.log('profile', this.profile);
       );
   }
 }
